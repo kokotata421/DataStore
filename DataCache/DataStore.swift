@@ -34,17 +34,17 @@ extension Cacheable {
         try T.set(key: key.rawValue, value: nil, cache: self)
     }
     // Note: You need to override this method
-    fileprivate var store: DataStorable.Type { fatalError("abstract class instance") }
+    internal var store: DataStorable.Type { fatalError("abstract class instance") }
     
-    fileprivate func save(_ key: String, value: Data) {
+    internal func save(_ key: String, value: Data) {
         store.save(key, value: value)
     }
     
-    fileprivate func fetch(_ key: String) -> Data? {
+    internal func fetch(_ key: String) -> Data? {
         return store.fetch(key)
     }
     
-    fileprivate func delete(_ key: String) {
+    internal func delete(_ key: String) {
         store.delete(key)
     }
 }
