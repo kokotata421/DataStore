@@ -17,6 +17,7 @@
 		E50A3A4C2326C07A00813D5A /* DataStoreKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A3A4A2326C06C00813D5A /* DataStoreKey.swift */; };
 		E50A3A4E2326C07F00813D5A /* DataStore+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A3A4D2326C07F00813D5A /* DataStore+Rx.swift */; };
 		E50A3A542326C47300813D5A /* LocalCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A3A532326C47300813D5A /* LocalCache.swift */; };
+		E50A3A562326C50000813D5A /* KeychainCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E50A3A552326C50000813D5A /* KeychainCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		E50A3A4A2326C06C00813D5A /* DataStoreKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStoreKey.swift; sourceTree = "<group>"; };
 		E50A3A4D2326C07F00813D5A /* DataStore+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataStore+Rx.swift"; sourceTree = "<group>"; };
 		E50A3A532326C47300813D5A /* LocalCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalCache.swift; sourceTree = "<group>"; };
+		E50A3A552326C50000813D5A /* KeychainCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 				E50A3A042326B9A000813D5A /* Info.plist */,
 				E50A3A402326BFC000813D5A /* DataStore.swift */,
 				E50A3A532326C47300813D5A /* LocalCache.swift */,
+				E50A3A552326C50000813D5A /* KeychainCache.swift */,
 				E50A3A4A2326C06C00813D5A /* DataStoreKey.swift */,
 				E50A3A4D2326C07F00813D5A /* DataStore+Rx.swift */,
 			);
@@ -254,6 +257,7 @@
 				E50A3A412326BFC100813D5A /* DataStore.swift in Sources */,
 				E50A3A542326C47300813D5A /* LocalCache.swift in Sources */,
 				E50A3A4C2326C07A00813D5A /* DataStoreKey.swift in Sources */,
+				E50A3A562326C50000813D5A /* KeychainCache.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import KeychainAccess
 
 public protocol Cacheable: class {
     func save<T: CacheValue>(_ key: CacheKey<T>, value: T) throws
