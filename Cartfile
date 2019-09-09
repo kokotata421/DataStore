@@ -1,0 +1,2 @@
+github "ReactiveX/RxSwift" ~> 5.0
+github "kishikawakatsumi/KeychainAccess" == 3.2.0
