@@ -28,6 +28,8 @@ class LocalDataStore: DataStorable {
    
 }
 
-typealias LocalCache = Cache<LocalDataStore>
+final class LocalCache: Cache {
+    var store: DataStorable.Type = LocalDataStore.self
+}
 
 

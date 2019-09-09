@@ -11,7 +11,6 @@ import RxSwift
 
 extension Cache: ReactiveCompatible {}
 
-
 extension Reactive where Base: Cacheable {
     func save<T: CacheValue>(key: CacheKey<T>, value: T) -> Completable {
         return Completable.create { observer in

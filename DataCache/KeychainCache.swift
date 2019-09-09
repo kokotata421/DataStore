@@ -27,5 +27,6 @@ class KeyChainDataStore: DataStorable {
 }
 
 
-typealias KeyChainCache = Cache<KeyChainDataStore>
-
+final class KeychainCache: Cache {
+    var store: DataStorable.Type = KeyChainDataStore.self
+}

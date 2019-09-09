@@ -49,9 +49,7 @@ extension Cacheable {
 }
 
 
-final class Cache<Store: DataStorable>: Cacheable {
-    let store: Store.Type = Store.self
-}
+public class Cache: Cacheable {}
 
 // MARK: LocalCacheValue
 public protocol CacheSettable {
