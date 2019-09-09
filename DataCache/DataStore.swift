@@ -9,13 +9,13 @@
 import Foundation
 import KeychainAccess
 
-public protocol Cacheable {
+public protocol Cacheable: class {
     func save<T: CacheValue>(_ key: CacheKey<T>, value: T) throws
     func fetch<T: CacheValue>(_ key: CacheKey<T>) throws -> T?
     func delete<T: CacheValue>(_ key: CacheKey<T>) throws
 }
 
-public protocol DataStorable {
+public protocol DataStorable: class {
     static func save(_ key: String, value: Data)
     static func fetch(_ key: String) -> Data?
     static func delete(_ key: String)
