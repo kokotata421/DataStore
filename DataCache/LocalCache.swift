@@ -8,32 +8,26 @@
 
 import Foundation
 
+
 class LocalDataStore: DataStorable {
-    static let shared = LocalDataStore()
-    private let store: UserDefaults = .standard
-    func save(_ key: String, value: Data) {
+    private static let store: UserDefaults = .standard
+    static func save(_ key: String, value: Data) {
         store.set(value, forKey: key)
     }
     
-    func fetch(_ key: String) -> Data? {
+    static func fetch(_ key: String) -> Data? {
         guard let data = store.data(forKey: key) else {
             return nil
         }
         return data
     }
     
-    func delete(_ key: String) {
+    static func delete(_ key: String) {
         store.set(nil, forKey: key)
     }
-    
-    private init() {}
+   
 }
 
-public final class LocalCache: Cacheable {
-    static let shared = LocalCache()
-    private init() {}
-    
-    fileprivate var store: LocalDataStore {
-        return LocalDataStore.shared
-    }
-}
+typealias LocalCache = Cache<LocalDataStore>
+
+

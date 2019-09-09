@@ -15,9 +15,9 @@ public protocol Cacheable: class {
 }
 
 public protocol DataStorable: class {
-    func save(_ key: String, value: Data)
-    func fetch(_ key: String) -> Data?
-    func delete(_ key: String)
+    static func save(_ key: String, value: Data)
+    static func fetch(_ key: String) -> Data?
+    static func delete(_ key: String)
 }
 
 extension Cacheable {
@@ -33,7 +33,7 @@ extension Cacheable {
         try T.set(key: key.rawValue, value: nil, cache: self)
     }
     // Note: You need to override this method
-    internal var store: DataStorable { fatalError("abstract class instance") }
+    internal var store: DataStorable.Type { fatalError("abstract class instance") }
     
     internal func save(_ key: String, value: Data) {
         store.save(key, value: value)
@@ -46,6 +46,11 @@ extension Cacheable {
     internal func delete(_ key: String) {
         store.delete(key)
     }
+}
+
+
+final class Cache<Store: DataStorable>: Cacheable {
+    let store: Store.Type = Store.self
 }
 
 // MARK: LocalCacheValue
