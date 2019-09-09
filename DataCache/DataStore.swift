@@ -16,9 +16,9 @@ public protocol Cacheable: class {
 }
 
 public protocol DataStorable: class {
-    static func save(_ key: String, value: Data)
-    static func fetch(_ key: String) -> Data?
-    static func delete(_ key: String)
+    func save(_ key: String, value: Data)
+    func fetch(_ key: String) -> Data?
+    func delete(_ key: String)
 }
 
 extension Cacheable {
@@ -34,7 +34,7 @@ extension Cacheable {
         try T.set(key: key.rawValue, value: nil, cache: self)
     }
     // Note: You need to override this method
-    internal var store: DataStorable.Type { fatalError("abstract class instance") }
+    internal var store: DataStorable { fatalError("abstract class instance") }
     
     internal func save(_ key: String, value: Data) {
         store.save(key, value: value)
@@ -48,53 +48,6 @@ extension Cacheable {
         store.delete(key)
     }
 }
-
-
-class Cache: Cacheable {}
-
-final class LocalCache: Cache {
-    fileprivate let store: LocalDataStore.Type = LocalDataStore.self
-}
-
-final class KeyChainCache: Cache {
-    fileprivate let store: KeyChainCache.Type = KeyChainCache.self
-}
-
-class LocalDataStore: DataStorable {
-    private static let store: UserDefaults = .standard
-    static func save(_ key: String, value: Data) {
-        store.set(value, forKey: key)
-    }
-    
-    static func fetch(_ key: String) -> Data? {
-        guard let data = store.data(forKey: key) else {
-            return nil
-        }
-        return data
-    }
-    
-    static func delete(_ key: String) {
-        store.set(nil, forKey: key)
-    }
-}
-
-
-
-class KeyChainDataStore: DataStorable {
-    private static let store: Keychain = Keychain(service: Bundle.main.bundleIdentifier!)
-    static func save(_ key: String, value: Data) {
-        store[data: key] = value
-    }
-    
-    static public func fetch(_ key: String) -> Data? {
-        return store[data: key]
-    }
-    
-    static public func delete(_ key: String) {
-        store[data: key] = nil
-    }
-}
-
 
 // MARK: LocalCacheValue
 public protocol CacheSettable {
